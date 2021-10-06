@@ -18,7 +18,7 @@ $surreyCentral = $translinkRTTI->getStops(55612);
 var_dump($surreyCentral);
 ```
 
-Output will be a standard class object with a status code and content member. The content will also be in JSON form.
+Output will be a standard class object with a status code and content member. The content will also be a JSON string.
 
 ```php
 object(stdClass)#4 (2) {
@@ -39,7 +39,7 @@ There are five methods supported:
     - Filters include 'stopNo'
 - getStatus(string $serviceName)
 
-For more information on usage, see the code and their related doc strings.
+For more information on usage, see the source code and the related doc strings.
 
 ## License
 
