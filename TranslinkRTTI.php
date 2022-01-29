@@ -18,8 +18,8 @@ use translinkrtti\lib\TranslinkException;
 class TranslinkRTTI 
 {
     const TRANSLINK_DOMAIN = 'https://api.translink.ca/rttiapi/v1';
-    const DEFAULT_BUS_COUNT = 6;
-    const DEFAULT_TIMEFRAME = 120;
+    const MAX_BUS_COUNT = 10;
+    const MAX_TIMEFRAME = 120;
     const DEFAULT_STOP_MAX_RADIUS = 2000;
 
     private string $apiKey;
@@ -104,17 +104,17 @@ class TranslinkRTTI
         $url = $this->appendAPIKey($url);
 
         $busCount = $this->getFilter($filters, 'count');
-        $busCountFiltered = filter_var($busCount, FILTER_VALIDATE_INT, ['options' => ['min_range' => 1, 'max_range' => 10]]);
+        $busCountFiltered = filter_var($busCount, FILTER_VALIDATE_INT, ['options' => ['min_range' => 1, 'max_range' => self::MAX_BUS_COUNT]]);
 
         if ((trim($busCount) !== '') && !$busCountFiltered) {
-            throw new TranslinkException('Invalid bus count specified. Please try an integer between 1 and 10.');
+            throw new TranslinkException('Invalid bus count specified. Please try an integer between 1 and ' . self::MAX_BUS_COUNT);
         }
 
         $timeFrame = $this->getFilter($filters, 'time_frame_min');
-        $timeFrameFiltered = filter_var($timeFrame, FILTER_VALIDATE_INT, ['options' => ['min_range' => 1, 'max_range' => 120]]);
+        $timeFrameFiltered = filter_var($timeFrame, FILTER_VALIDATE_INT, ['options' => ['min_range' => 1, 'max_range' => self::MAX_TIMEFRAME]]);
 
         if ((trim($timeFrame) !== '') && !$timeFrameFiltered) {
-            throw new TranslinkException('Invalid time frame specified. Please try an integer between 1 and 120.');
+            throw new TranslinkException('Invalid time frame specified. Please try an integer between 1 and ' . self::MAX_TIMEFRAME);
         }
 
         $routeNo = $this->getFilter($filters, 'routeNo');
