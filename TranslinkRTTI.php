@@ -111,10 +111,10 @@ class TranslinkRTTI
         }
 
         $timeFrame = $this->getFilter($filters, 'time_frame_min');
-        $timeFrameFiltered = filter_var($timeFrame, FILTER_VALIDATE_INT, ['options' => ['min_range' => 1, 'max_range' => 10]]);
+        $timeFrameFiltered = filter_var($timeFrame, FILTER_VALIDATE_INT, ['options' => ['min_range' => 1, 'max_range' => 120]]);
 
         if ((trim($timeFrame) !== '') && !$timeFrameFiltered) {
-            throw new TranslinkException('Invalid time frame specified. Please try an integer between 1 and 10.');
+            throw new TranslinkException('Invalid time frame specified. Please try an integer between 1 and 120.');
         }
 
         $routeNo = $this->getFilter($filters, 'routeNo');
