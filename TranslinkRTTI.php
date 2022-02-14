@@ -7,7 +7,7 @@
  * For details on how to get started, or apply for an API key, please see developer.translink.ca.
  * 
  * @author Martyr2
- * @copyright 2021 Martyr2
+ * @copyright 2022 Martyr2
  * @link https://www.coderslexicon.com
  * 
  */
