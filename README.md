@@ -48,3 +48,16 @@ The TranslinkRTTI wrapper class is software licensed under the [MIT license](htt
 ## Questions or to Report An Issue
 
 If you would like to report an issue with this code, please [email us](mailto:github@coderslexicon.com).
+
+
+------
+
+# Link to the rttiapi code
+
+```
+$ grep -r rttiapi *
+TranslinkRTTI.php:    const TRANSLINK_DOMAIN = 'https://api.translink.ca/rttiapi/v1';
+
+```
+
+
